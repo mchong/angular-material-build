@@ -1671,6 +1671,220 @@ button.md-button::-moz-focus-inner {
   }
 }
 
+$card-padding: 16px !default;
+$card-box-shadow: $whiteframe-shadow-1dp !default;
+
+md-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: $baseline-grid;
+
+  box-shadow: $card-box-shadow;
+
+  md-card-header {
+    padding: $card-padding;
+    display: flex;
+    flex-direction: row;
+
+    &:first-child {
+      md-card-avatar {
+       @include rtl-prop(margin-right, margin-left, 12px);
+      }
+    }
+
+    &:last-child {
+      md-card-avatar {
+        @include rtl-prop(margin-left, margin-right, 12px);
+      }
+    }
+
+    md-card-avatar {
+      width: 40px;
+      height: 40px;
+
+      .md-user-avatar,
+      md-icon{
+        border-radius: 50%;
+      }
+
+      md-icon {
+        padding: 8px;
+      }
+
+      & + md-card-header-text {
+        max-height: 40px;
+
+        .md-title {
+          font-size: 14px;
+        }
+      }
+    }
+
+    md-card-header-text {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      .md-subhead {
+        font-size: 14px;
+      }
+    }
+  }
+
+  > img,
+  > :not(md-card-content) img {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100% !important;
+  }
+
+  md-card-title {
+    padding: 3 * $card-padding / 2 $card-padding $card-padding;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+
+    & + md-card-content {
+      padding-top: 0;
+    }
+
+    md-card-title-text {
+      flex: 1;
+      flex-direction: column;
+      display: flex;
+
+      .md-subhead {
+        padding-top: 0;
+        font-size: 14px;
+      }
+
+      &:only-child {
+        .md-subhead {
+          padding-top: 3 * $card-padding / 4;
+        }
+      }
+    }
+
+    md-card-title-media {
+      margin-top: - $card-padding / 2;
+
+      .md-media-sm {
+        height: 80px;
+        width: 80px;
+      }
+      .md-media-md {
+        height: 112px;
+        width: 112px;
+      }
+      .md-media-lg {
+        height: 152px;
+        width: 152px;
+      }
+    }
+  }
+
+  md-card-content {
+    display: block;
+    padding: $card-padding;
+
+    & > p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .md-media-xl {
+      height: 240px;
+      width: 240px;
+    }
+  }
+
+  .md-actions, md-card-actions {
+    margin: $baseline-grid;
+
+    &.layout-column {
+      .md-button {
+        &:not(.md-icon-button) {
+          margin: $baseline-grid / 4 0;
+
+          &:first-of-type {
+            margin-top: 0;
+          }
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+
+        &.md-icon-button {
+          margin-top: 3 * $baseline-grid / 4;
+          margin-bottom: 3 * $baseline-grid / 4;
+        }
+      }
+    }
+
+    md-card-icon-actions {
+      flex: 1;
+      justify-content: flex-start;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &:not(.layout-column) .md-button {
+      &:not(.md-icon-button) {
+        margin: 0 $baseline-grid * .5;
+
+        &:first-of-type {
+          @include rtl-prop(margin-left, margin-right, 0);
+        }
+
+        &:last-of-type {
+          @include rtl-prop(margin-right, margin-left, 0);
+        }
+      }
+
+      &.md-icon-button {
+        margin-left: 3 * $baseline-grid / 4;
+        margin-right: 3 * $baseline-grid / 4;
+
+        &:first-of-type {
+          @include rtl-prop(margin-left, margin-right, 3 * $baseline-grid / 2);
+        }
+
+        &:last-of-type {
+          @include rtl-prop(margin-right, margin-left, 3 * $baseline-grid / 2);
+        }
+      }
+
+      & + md-card-icon-actions {
+        flex: 1;
+        justify-content: flex-end;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+
+  md-card-footer {
+    margin-top: auto;
+    padding: $card-padding;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-card {
+    border: 1px solid #fff;
+  }
+}
+
+
 $checkbox-width: 20px !default;
 $checkbox-height: $checkbox-width !default;
 $checkbox-margin: 16px !default;
@@ -2025,220 +2239,6 @@ $contact-chip-name-width: rem(12) !default;
   }
   ._md-chip-input-container md-autocomplete {
     border: none;
-  }
-}
-
-
-$card-padding: 16px !default;
-$card-box-shadow: $whiteframe-shadow-1dp !default;
-
-md-card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: $baseline-grid;
-
-  box-shadow: $card-box-shadow;
-
-  md-card-header {
-    padding: $card-padding;
-    display: flex;
-    flex-direction: row;
-
-    &:first-child {
-      md-card-avatar {
-       @include rtl-prop(margin-right, margin-left, 12px);
-      }
-    }
-
-    &:last-child {
-      md-card-avatar {
-        @include rtl-prop(margin-left, margin-right, 12px);
-      }
-    }
-
-    md-card-avatar {
-      width: 40px;
-      height: 40px;
-
-      .md-user-avatar,
-      md-icon{
-        border-radius: 50%;
-      }
-
-      md-icon {
-        padding: 8px;
-      }
-
-      & + md-card-header-text {
-        max-height: 40px;
-
-        .md-title {
-          font-size: 14px;
-        }
-      }
-    }
-
-    md-card-header-text {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-
-      .md-subhead {
-        font-size: 14px;
-      }
-    }
-  }
-
-  > img,
-  > :not(md-card-content) img {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 0 auto;
-    width: 100%;
-    height: 100% !important;
-  }
-
-  md-card-title {
-    padding: 3 * $card-padding / 2 $card-padding $card-padding;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-
-    & + md-card-content {
-      padding-top: 0;
-    }
-
-    md-card-title-text {
-      flex: 1;
-      flex-direction: column;
-      display: flex;
-
-      .md-subhead {
-        padding-top: 0;
-        font-size: 14px;
-      }
-
-      &:only-child {
-        .md-subhead {
-          padding-top: 3 * $card-padding / 4;
-        }
-      }
-    }
-
-    md-card-title-media {
-      margin-top: - $card-padding / 2;
-
-      .md-media-sm {
-        height: 80px;
-        width: 80px;
-      }
-      .md-media-md {
-        height: 112px;
-        width: 112px;
-      }
-      .md-media-lg {
-        height: 152px;
-        width: 152px;
-      }
-    }
-  }
-
-  md-card-content {
-    display: block;
-    padding: $card-padding;
-
-    & > p {
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .md-media-xl {
-      height: 240px;
-      width: 240px;
-    }
-  }
-
-  .md-actions, md-card-actions {
-    margin: $baseline-grid;
-
-    &.layout-column {
-      .md-button {
-        &:not(.md-icon-button) {
-          margin: $baseline-grid / 4 0;
-
-          &:first-of-type {
-            margin-top: 0;
-          }
-
-          &:last-of-type {
-            margin-bottom: 0;
-          }
-        }
-
-        &.md-icon-button {
-          margin-top: 3 * $baseline-grid / 4;
-          margin-bottom: 3 * $baseline-grid / 4;
-        }
-      }
-    }
-
-    md-card-icon-actions {
-      flex: 1;
-      justify-content: flex-start;
-      display: flex;
-      flex-direction: row;
-    }
-
-    &:not(.layout-column) .md-button {
-      &:not(.md-icon-button) {
-        margin: 0 $baseline-grid * .5;
-
-        &:first-of-type {
-          @include rtl-prop(margin-left, margin-right, 0);
-        }
-
-        &:last-of-type {
-          @include rtl-prop(margin-right, margin-left, 0);
-        }
-      }
-
-      &.md-icon-button {
-        margin-left: 3 * $baseline-grid / 4;
-        margin-right: 3 * $baseline-grid / 4;
-
-        &:first-of-type {
-          @include rtl-prop(margin-left, margin-right, 3 * $baseline-grid / 2);
-        }
-
-        &:last-of-type {
-          @include rtl-prop(margin-right, margin-left, 3 * $baseline-grid / 2);
-        }
-      }
-
-      & + md-card-icon-actions {
-        flex: 1;
-        justify-content: flex-end;
-        display: flex;
-        flex-direction: row;
-      }
-    }
-  }
-
-  md-card-footer {
-    margin-top: auto;
-    padding: $card-padding;
-  }
-}
-
-@media screen and (-ms-high-contrast: active) {
-  md-card {
-    border: 1px solid #fff;
   }
 }
 
@@ -3193,6 +3193,410 @@ md-icon {
 //  -moz-osx-font-smoothing:grayscale;
 //}
 
+$input-container-padding: 2px !default;
+
+$input-label-default-offset: 24px !default;
+$input-label-default-scale: 1.0 !default;
+$input-label-float-offset: 6px !default;
+$input-label-float-scale: 0.75 !default;
+$input-label-float-width: $input-container-padding + 16px;
+
+$input-placeholder-offset: $input-label-default-offset !default;
+
+$input-border-width-default: 1px !default;
+$input-border-width-focused: 2px !default;
+$input-line-height: 26px !default;
+$input-padding-top: 2px !default;
+
+$input-error-font-size: 12px !default;
+$input-error-height: 24px !default;
+$input-error-line-height: $input-error-font-size + 2px;
+$error-padding-top: ($input-error-height - $input-error-line-height) / 2;
+
+$icon-offset: 36px !default;
+
+$icon-top-offset: ($icon-offset - $input-padding-top - $input-border-width-focused) / 4;
+
+$icon-float-focused-top: -8px !default;
+
+md-input-container {
+  @include pie-clearfix();
+  display: inline-block;
+  position: relative;
+  padding: $input-container-padding;
+  margin: 18px 0;
+  vertical-align: middle;
+
+  &.md-block {
+    display: block;
+  }
+
+  // Setup a spacer that is always there as a placeholder for any messages so we don't change
+  // height with only 1 message
+  .md-errors-spacer {
+    @include rtl(float, right, left);
+    min-height: $input-error-height;
+
+    // Ensure the element always takes up space, even if empty
+    min-width: 1px;
+  }
+
+  > md-icon {
+    position: absolute;
+    top: $icon-top-offset;
+    @include rtl(left, 2px, auto);
+    @include rtl(right, auto, 2px);
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"] {
+    /* remove default appearance from all input/textarea */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"] {
+    min-height: $input-line-height;
+  }
+  textarea {
+    resize: none;
+    overflow: hidden;
+
+    &.md-input {
+      min-height: $input-line-height;
+      -ms-flex-preferred-size: auto; //IE fix
+    }
+
+    &._md-textarea-scrollable,
+    &[md-no-autogrow] {
+      overflow: auto;
+    }
+
+    // The height usually gets set to 1 line by `.md-input`.
+    &[md-no-autogrow] {
+      height: auto;
+    }
+  }
+
+  label:not(._md-container-ignore) {
+    position: absolute;
+    bottom: 100%;
+    @include rtl(left, 0, auto);
+    @include rtl(right, auto, 0);
+
+    &.md-required:after {
+      content: ' *';
+      font-size: 13px;
+      vertical-align: top;
+    }
+  }
+
+  label:not(.md-no-float):not(._md-container-ignore),
+  ._md-placeholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    order: 1;
+    pointer-events: none;
+    -webkit-font-smoothing: antialiased;
+    @include rtl(padding-left, $input-container-padding + 1px, 0);
+    @include rtl(padding-right, 0, $input-container-padding + 1px);
+    z-index: 1;
+    transform: translate3d(0, $input-label-default-offset + 4, 0) scale($input-label-default-scale);
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+
+    @include rtl(transform-origin, left top, right top);
+  }
+  ._md-placeholder {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition-property: opacity, transform;
+    transform: translate3d(0, $input-placeholder-offset + $baseline-grid * 0.75, 0);
+  }
+  &.md-input-focused ._md-placeholder {
+    opacity: 1;
+    transform: translate3d(0, $input-placeholder-offset, 0);
+  }
+  // Placeholder should immediately disappear when the user starts typing
+  &.md-input-has-value ._md-placeholder {
+    transition: none;
+    opacity: 0;
+  }
+
+  &:not( .md-input-has-value ) input:not( :focus ),
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-ampm-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-day-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-hour-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-millisecond-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-minute-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-month-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-second-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-week-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-year-field,
+  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-text {
+    color: transparent;
+  }
+
+  /*
+   * The .md-input class is added to the input/textarea
+   */
+  .md-input {
+    order: 2;
+    display: block;
+    margin-top: 0;
+
+    background: none;
+    padding-top: $input-padding-top;
+    padding-bottom: $input-border-width-focused - $input-border-width-default;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-width: 0 0 $input-border-width-default 0;
+    line-height: $input-line-height;
+    height: $input-line-height + ($input-padding-top * 2);
+    -ms-flex-preferred-size: $input-line-height; //IE fix
+    border-radius: 0;
+    border-style: solid; // Firefox fix
+
+    // Fix number inputs in Firefox to be full-width
+    width: 100%;
+    box-sizing: border-box;
+
+    // Hacky fix to force vertical alignment between `input` and `textarea`
+    // Input and textarea do not align by default:
+    // http://jsbin.com/buqomevage/1/edit?html,css,js,output
+    @include rtl(float, left, right);
+
+    &:focus {
+      outline: none;
+    }
+    &:invalid {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &.md-no-flex {
+      flex: none !important;
+    }
+  }
+
+  .md-char-counter {
+    @include rtl(text-align, right, left);
+    @include rtl(padding-right, $input-container-padding, 0);
+    @include rtl(padding-left, 0, $input-container-padding);
+  }
+
+  //
+  // ngMessage base styles - animations moved to input.js
+  //
+  .md-input-messages-animation {
+    position: relative;
+    order: 4;
+    overflow: hidden;
+    @include rtl(clear, left, right);
+
+    &.ng-enter {
+      // Upon entering the DOM, messages should be hidden
+      .md-input-message-animation {
+        opacity: 0;
+        margin-top: -100px;
+      }
+    }
+  }
+
+  .md-input-message-animation, .md-char-counter {
+    font-size: $input-error-font-size;
+    line-height: $input-error-line-height;
+    overflow: hidden;
+
+    transition: $swift-ease-in;
+
+    // Default state for messages is to be visible
+    opacity: 1;
+    margin-top: 0;
+
+    // Add some top padding which is equal to half the difference between the expected height
+    // and the actual height
+    padding-top: $error-padding-top;
+
+    &:not(.md-char-counter) {
+      // Add some padding so that the messages don't touch the character counter
+      @include rtl(padding-right, rem(0.5), 0);
+      @include rtl(padding-left, 0, rem(0.5));
+    }
+  }
+
+  &:not(.md-input-invalid) {
+    .md-auto-hide {
+      .md-input-message-animation {
+        opacity: 0;
+        margin-top: -100px;
+      }
+    }
+  }
+
+  // Note: This is a workaround to fix an ng-enter flicker bug
+  .md-auto-hide {
+    .md-input-message-animation {
+      &:not(.ng-animate) {
+        opacity: 0;
+        margin-top: -100px;
+      }
+    }
+  }
+
+  .md-input-message-animation {
+    &.ng-enter {
+      opacity: 0;
+      margin-top: -100px;
+    }
+  }
+
+  &.md-input-focused,
+  &.md-input-has-placeholder,
+  &.md-input-has-value {
+    label:not(.md-no-float) {
+      transform: translate3d(0, $input-label-float-offset, 0) scale($input-label-float-scale);
+      transition: transform $swift-ease-out-timing-function $swift-ease-out-duration,
+                  width $swift-ease-out-timing-function $swift-ease-out-duration;
+      width: calc((100% - #{$input-label-float-width}) / #{$input-label-float-scale});
+    }
+  }
+
+  // If we have an existing value; don't animate the transform as it happens on page load and
+  // causes erratic/unnecessary animation
+  &.md-input-has-value {
+    label {
+      transition: none;
+    }
+  }
+
+  // Use wide border in error state or in focused state
+  &.md-input-focused .md-input,
+  .md-input.ng-invalid.ng-dirty {
+    padding-bottom: 0; // Increase border width by 1px, decrease padding by 1
+    border-width: 0 0 $input-border-width-focused 0;
+  }
+
+  .md-input {
+    &[disabled],
+    [disabled] & {
+      background-position: 0 bottom;
+      // This background-size is coordinated with a linear-gradient set in input-theme.scss
+      // to create a dotted line under the input.
+      background-size: 4px 1px;
+      background-repeat: repeat-x;
+      margin-bottom: -1px; // Shift downward so dotted line is positioned the same as other bottom borders
+    }
+  }
+
+  &.md-icon-float {
+
+    transition: margin-top $swift-ease-out-duration $swift-ease-out-timing-function;
+
+    > label {
+      pointer-events: none;
+      position: absolute;
+    }
+
+    > md-icon {
+      top: $icon-top-offset;
+      @include rtl(left, 2px, auto);
+      @include rtl(right, auto, 2px);
+    }
+
+  }
+
+  &.md-icon-left,
+  &.md-icon-right {
+    > label {
+      &:not(.md-no-float):not(._md-container-ignore),
+      .md-placeholder {
+        width: calc(100% - #{$icon-offset} - #{$input-label-float-width});
+      }
+    }
+
+    &.md-input-focused,
+    &.md-input-has-placeholder,
+    &.md-input-has-value {
+      > label {
+        &:not(.md-no-float):not(._md-container-ignore),
+        .md-placeholder {
+          width: calc((100% - #{$icon-offset} - #{$input-label-float-width}) / #{$input-label-float-scale});
+        }
+      }
+    }
+  }
+
+  // icon offset should have higher priority as normal label
+  &.md-icon-left {
+    @include rtl(padding-left, $icon-offset, 0);
+    @include rtl(padding-right, 0, $icon-offset);
+    > label {
+      @include rtl(left, $icon-offset, auto);
+      @include rtl(right, auto, $icon-offset);
+    }
+  }
+
+  &.md-icon-right {
+    @include rtl(padding-left, 0, $icon-offset);
+    @include rtl(padding-right, $icon-offset, 0);
+
+    > md-icon:last-of-type {
+      margin: 0;
+
+      @include rtl(right, 2px, auto);
+      @include rtl(left, auto, 2px);
+    }
+  }
+
+  &.md-icon-left.md-icon-right {
+    padding-left: $icon-offset;
+    padding-right: $icon-offset;
+
+    > label {
+      &:not(.md-no-float):not(._md-container-ignore),
+      .md-placeholder {
+        width: calc(100% - (#{$icon-offset} * 2));
+      }
+    }
+
+    &.md-input-focused,
+    &.md-input-has-placeholder,
+    &.md-input-has-value {
+      > label {
+        &:not(.md-no-float):not(._md-container-ignore),
+        .md-placeholder {
+          width: calc((100% - (#{$icon-offset} * 2)) / #{$input-label-float-scale});
+        }
+      }
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-input-container.md-default-theme > md-icon {
+    fill: #fff;
+  }
+}
+
 $dense-baseline-grid: $baseline-grid / 2 !default;
 
 $list-h3-margin: 0 0 0px 0 !default;
@@ -3598,410 +4002,6 @@ md-list-item {
   }
 }
 
-$input-container-padding: 2px !default;
-
-$input-label-default-offset: 24px !default;
-$input-label-default-scale: 1.0 !default;
-$input-label-float-offset: 6px !default;
-$input-label-float-scale: 0.75 !default;
-$input-label-float-width: $input-container-padding + 16px;
-
-$input-placeholder-offset: $input-label-default-offset !default;
-
-$input-border-width-default: 1px !default;
-$input-border-width-focused: 2px !default;
-$input-line-height: 26px !default;
-$input-padding-top: 2px !default;
-
-$input-error-font-size: 12px !default;
-$input-error-height: 24px !default;
-$input-error-line-height: $input-error-font-size + 2px;
-$error-padding-top: ($input-error-height - $input-error-line-height) / 2;
-
-$icon-offset: 36px !default;
-
-$icon-top-offset: ($icon-offset - $input-padding-top - $input-border-width-focused) / 4;
-
-$icon-float-focused-top: -8px !default;
-
-md-input-container {
-  @include pie-clearfix();
-  display: inline-block;
-  position: relative;
-  padding: $input-container-padding;
-  margin: 18px 0;
-  vertical-align: middle;
-
-  &.md-block {
-    display: block;
-  }
-
-  // Setup a spacer that is always there as a placeholder for any messages so we don't change
-  // height with only 1 message
-  .md-errors-spacer {
-    @include rtl(float, right, left);
-    min-height: $input-error-height;
-
-    // Ensure the element always takes up space, even if empty
-    min-width: 1px;
-  }
-
-  > md-icon {
-    position: absolute;
-    top: $icon-top-offset;
-    @include rtl(left, 2px, auto);
-    @include rtl(right, auto, 2px);
-  }
-
-  textarea,
-  input[type="text"],
-  input[type="password"],
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="date"],
-  input[type="month"],
-  input[type="time"],
-  input[type="week"],
-  input[type="number"],
-  input[type="email"],
-  input[type="url"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="color"] {
-    /* remove default appearance from all input/textarea */
-    -moz-appearance: none;
-    -webkit-appearance: none;
-  }
-  input[type="date"],
-  input[type="datetime-local"],
-  input[type="month"],
-  input[type="time"],
-  input[type="week"] {
-    min-height: $input-line-height;
-  }
-  textarea {
-    resize: none;
-    overflow: hidden;
-
-    &.md-input {
-      min-height: $input-line-height;
-      -ms-flex-preferred-size: auto; //IE fix
-    }
-
-    &._md-textarea-scrollable,
-    &[md-no-autogrow] {
-      overflow: auto;
-    }
-
-    // The height usually gets set to 1 line by `.md-input`.
-    &[md-no-autogrow] {
-      height: auto;
-    }
-  }
-
-  label:not(._md-container-ignore) {
-    position: absolute;
-    bottom: 100%;
-    @include rtl(left, 0, auto);
-    @include rtl(right, auto, 0);
-
-    &.md-required:after {
-      content: ' *';
-      font-size: 13px;
-      vertical-align: top;
-    }
-  }
-
-  label:not(.md-no-float):not(._md-container-ignore),
-  ._md-placeholder {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    order: 1;
-    pointer-events: none;
-    -webkit-font-smoothing: antialiased;
-    @include rtl(padding-left, $input-container-padding + 1px, 0);
-    @include rtl(padding-right, 0, $input-container-padding + 1px);
-    z-index: 1;
-    transform: translate3d(0, $input-label-default-offset + 4, 0) scale($input-label-default-scale);
-    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
-
-    @include rtl(transform-origin, left top, right top);
-  }
-  ._md-placeholder {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    transition-property: opacity, transform;
-    transform: translate3d(0, $input-placeholder-offset + $baseline-grid * 0.75, 0);
-  }
-  &.md-input-focused ._md-placeholder {
-    opacity: 1;
-    transform: translate3d(0, $input-placeholder-offset, 0);
-  }
-  // Placeholder should immediately disappear when the user starts typing
-  &.md-input-has-value ._md-placeholder {
-    transition: none;
-    opacity: 0;
-  }
-
-  &:not( .md-input-has-value ) input:not( :focus ),
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-ampm-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-day-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-hour-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-millisecond-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-minute-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-month-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-second-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-week-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-year-field,
-  &:not( .md-input-has-value ) input:not( :focus )::-webkit-datetime-edit-text {
-    color: transparent;
-  }
-
-  /*
-   * The .md-input class is added to the input/textarea
-   */
-  .md-input {
-    order: 2;
-    display: block;
-    margin-top: 0;
-
-    background: none;
-    padding-top: $input-padding-top;
-    padding-bottom: $input-border-width-focused - $input-border-width-default;
-    padding-left: 2px;
-    padding-right: 2px;
-    border-width: 0 0 $input-border-width-default 0;
-    line-height: $input-line-height;
-    height: $input-line-height + ($input-padding-top * 2);
-    -ms-flex-preferred-size: $input-line-height; //IE fix
-    border-radius: 0;
-    border-style: solid; // Firefox fix
-
-    // Fix number inputs in Firefox to be full-width
-    width: 100%;
-    box-sizing: border-box;
-
-    // Hacky fix to force vertical alignment between `input` and `textarea`
-    // Input and textarea do not align by default:
-    // http://jsbin.com/buqomevage/1/edit?html,css,js,output
-    @include rtl(float, left, right);
-
-    &:focus {
-      outline: none;
-    }
-    &:invalid {
-      outline: none;
-      box-shadow: none;
-    }
-
-    &.md-no-flex {
-      flex: none !important;
-    }
-  }
-
-  .md-char-counter {
-    @include rtl(text-align, right, left);
-    @include rtl(padding-right, $input-container-padding, 0);
-    @include rtl(padding-left, 0, $input-container-padding);
-  }
-
-  //
-  // ngMessage base styles - animations moved to input.js
-  //
-  .md-input-messages-animation {
-    position: relative;
-    order: 4;
-    overflow: hidden;
-    @include rtl(clear, left, right);
-
-    &.ng-enter {
-      // Upon entering the DOM, messages should be hidden
-      .md-input-message-animation {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
-  }
-
-  .md-input-message-animation, .md-char-counter {
-    font-size: $input-error-font-size;
-    line-height: $input-error-line-height;
-    overflow: hidden;
-
-    transition: $swift-ease-in;
-
-    // Default state for messages is to be visible
-    opacity: 1;
-    margin-top: 0;
-
-    // Add some top padding which is equal to half the difference between the expected height
-    // and the actual height
-    padding-top: $error-padding-top;
-
-    &:not(.md-char-counter) {
-      // Add some padding so that the messages don't touch the character counter
-      @include rtl(padding-right, rem(0.5), 0);
-      @include rtl(padding-left, 0, rem(0.5));
-    }
-  }
-
-  &:not(.md-input-invalid) {
-    .md-auto-hide {
-      .md-input-message-animation {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
-  }
-
-  // Note: This is a workaround to fix an ng-enter flicker bug
-  .md-auto-hide {
-    .md-input-message-animation {
-      &:not(.ng-animate) {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
-  }
-
-  .md-input-message-animation {
-    &.ng-enter {
-      opacity: 0;
-      margin-top: -100px;
-    }
-  }
-
-  &.md-input-focused,
-  &.md-input-has-placeholder,
-  &.md-input-has-value {
-    label:not(.md-no-float) {
-      transform: translate3d(0, $input-label-float-offset, 0) scale($input-label-float-scale);
-      transition: transform $swift-ease-out-timing-function $swift-ease-out-duration,
-                  width $swift-ease-out-timing-function $swift-ease-out-duration;
-      width: calc((100% - #{$input-label-float-width}) / #{$input-label-float-scale});
-    }
-  }
-
-  // If we have an existing value; don't animate the transform as it happens on page load and
-  // causes erratic/unnecessary animation
-  &.md-input-has-value {
-    label {
-      transition: none;
-    }
-  }
-
-  // Use wide border in error state or in focused state
-  &.md-input-focused .md-input,
-  .md-input.ng-invalid.ng-dirty {
-    padding-bottom: 0; // Increase border width by 1px, decrease padding by 1
-    border-width: 0 0 $input-border-width-focused 0;
-  }
-
-  .md-input {
-    &[disabled],
-    [disabled] & {
-      background-position: 0 bottom;
-      // This background-size is coordinated with a linear-gradient set in input-theme.scss
-      // to create a dotted line under the input.
-      background-size: 4px 1px;
-      background-repeat: repeat-x;
-      margin-bottom: -1px; // Shift downward so dotted line is positioned the same as other bottom borders
-    }
-  }
-
-  &.md-icon-float {
-
-    transition: margin-top $swift-ease-out-duration $swift-ease-out-timing-function;
-
-    > label {
-      pointer-events: none;
-      position: absolute;
-    }
-
-    > md-icon {
-      top: $icon-top-offset;
-      @include rtl(left, 2px, auto);
-      @include rtl(right, auto, 2px);
-    }
-
-  }
-
-  &.md-icon-left,
-  &.md-icon-right {
-    > label {
-      &:not(.md-no-float):not(._md-container-ignore),
-      .md-placeholder {
-        width: calc(100% - #{$icon-offset} - #{$input-label-float-width});
-      }
-    }
-
-    &.md-input-focused,
-    &.md-input-has-placeholder,
-    &.md-input-has-value {
-      > label {
-        &:not(.md-no-float):not(._md-container-ignore),
-        .md-placeholder {
-          width: calc((100% - #{$icon-offset} - #{$input-label-float-width}) / #{$input-label-float-scale});
-        }
-      }
-    }
-  }
-
-  // icon offset should have higher priority as normal label
-  &.md-icon-left {
-    @include rtl(padding-left, $icon-offset, 0);
-    @include rtl(padding-right, 0, $icon-offset);
-    > label {
-      @include rtl(left, $icon-offset, auto);
-      @include rtl(right, auto, $icon-offset);
-    }
-  }
-
-  &.md-icon-right {
-    @include rtl(padding-left, 0, $icon-offset);
-    @include rtl(padding-right, $icon-offset, 0);
-
-    > md-icon:last-of-type {
-      margin: 0;
-
-      @include rtl(right, 2px, auto);
-      @include rtl(left, auto, 2px);
-    }
-  }
-
-  &.md-icon-left.md-icon-right {
-    padding-left: $icon-offset;
-    padding-right: $icon-offset;
-
-    > label {
-      &:not(.md-no-float):not(._md-container-ignore),
-      .md-placeholder {
-        width: calc(100% - (#{$icon-offset} * 2));
-      }
-    }
-
-    &.md-input-focused,
-    &.md-input-has-placeholder,
-    &.md-input-has-value {
-      > label {
-        &:not(.md-no-float):not(._md-container-ignore),
-        .md-placeholder {
-          width: calc((100% - (#{$icon-offset} * 2)) / #{$input-label-float-scale});
-        }
-      }
-    }
-  }
-}
-
-@media screen and (-ms-high-contrast: active) {
-  md-input-container.md-default-theme > md-icon {
-    fill: #fff;
-  }
-}
-
 $menu-border-radius: 2px;
 $max-visible-items: 6;
 $menu-item-height: 6 * $baseline-grid;
@@ -4151,6 +4151,100 @@ md-toolbar {
 }
 
 
+md-toolbar.md-menu-toolbar {
+  h2.md-toolbar-tools {
+    line-height: 1rem;
+    height: auto;
+    padding: 3.5 * $baseline-grid;
+    padding-bottom: 1.5 * $baseline-grid;
+  }
+}
+
+md-menu-bar {
+  padding: 0 2.5 * $baseline-grid;
+  display: block;
+  position: relative;
+  z-index: 2;
+  .md-menu {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+  }
+  button {
+    font-size: rem(1.4);
+    padding: 0 1.25 * $baseline-grid;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+    height: 5 * $baseline-grid;
+  }
+
+  md-backdrop._md-menu-backdrop {
+    z-index: -2;
+  }
+}
+
+md-menu-content._md-menu-bar-menu.md-dense {
+  max-height: none;
+  padding: 2 * $baseline-grid 0;
+  md-menu-item.md-indent {
+    position: relative;
+    > md-icon {
+      position: absolute;
+      padding: 0;
+      width: 24px;
+      top: 0.75 * $baseline-grid;
+      @include rtl-prop(left, right, 3 * $baseline-grid);
+    }
+    > .md-button, .md-menu > .md-button {
+      @include rtl(padding, 0 4 * $baseline-grid 0 8 * $baseline-grid, 0 8 * $baseline-grid 0 4 * $baseline-grid);
+    }
+  }
+  .md-button {
+    min-height: 0;
+    height: 4 * $baseline-grid;
+    display: flex;
+    span {
+      flex-grow: 1;
+    }
+    span.md-alt-text {
+      flex-grow: 0;
+      align-self: flex-end;
+      margin: 0 $baseline-grid;
+    }
+  }
+  md-menu-divider {
+    margin: $baseline-grid 0;
+  }
+
+  md-menu-item > .md-button, .md-menu > .md-button {
+    @include rtl(text-align, left, right);
+    text-align: start;
+  }
+
+  .md-menu {
+    padding: 0;
+    > .md-button {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      text-transform: none;
+      font-weight: normal;
+      border-radius: 0px;
+      @include rtl-prop(padding-left, padding-right, 2 * $baseline-grid);
+      &:after {
+        display: block;
+        content: '\25BC';
+        position: absolute;
+        top: 0px;
+        speak: none;
+        @include rtl(transform, rotate(270deg) scaleY(0.45) scaleX(0.9), rotate(90deg) scaleY(0.45) scaleX(0.9));
+        @include rtl-prop(right, left, 3.5 * $baseline-grid);
+      }
+    }
+  }
+}
+
 // Used to avoid unnecessary layout
 md-progress-circular {
     position: relative;
@@ -4161,180 +4255,6 @@ md-progress-circular {
         top: 0;
         left: 0;
     }
-}
-
-$radio-width: 20px !default;
-$radio-height: $radio-width !default;
-$radio-text-margin: 10px !default;
-$radio-top-left: 12px !default;
-$radio-margin: 16px;
-
-md-radio-button {
-  box-sizing: border-box;
-  display: block;
-  margin-bottom: $radio-margin;
-  white-space: nowrap;
-  cursor: pointer;
-  position: relative;
-
-  // disabled
-  &[disabled] {
-    cursor: default;
-
-    ._md-container {
-      cursor: default;
-    }
-  }
-
-  ._md-container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    box-sizing: border-box;
-    display: inline-block;
-    width: $radio-width;
-    height: $radio-width;
-    cursor: pointer;
-    @include rtl(left, 0, auto);
-    @include rtl(right, auto, 0);
-
-    .md-ripple-container {
-      position: absolute;
-      display: block;
-      width: auto;
-      height: auto;
-      left: -15px;
-      top: -15px;
-      right: -15px;
-      bottom: -15px;
-    }
-
-    &:before {
-      box-sizing: border-box;
-      background-color: transparent;
-      border-radius: 50%;
-      content: '';
-      position: absolute;
-      display: block;
-      height: auto;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      transition: all 0.5s;
-      width: auto;
-    }
-  }
-
-  &.md-align-top-left > div._md-container {
-     top: $radio-top-left;
-   }
-
-  ._md-off {
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $radio-width;
-    height: $radio-width;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 50%;
-    transition: border-color ease 0.28s;
-  }
-
-  ._md-on {
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $radio-width;
-    height: $radio-width;
-    border-radius: 50%;
-    transition: transform ease 0.28s;
-    transform: scale(0);
-  }
-
-  &.md-checked ._md-on {
-    transform: scale(0.50);
-  }
-
-  ._md-label {
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block;
-
-    @include rtl(margin-left, $radio-text-margin + $radio-width, 0);
-    @include rtl(margin-right, 0, $radio-text-margin + $radio-width);
-
-    vertical-align: middle;
-    white-space: normal;
-    pointer-events: none;
-    width: auto;
-  }
-}
-
-md-radio-group {
-  &.layout-column,
-  &.layout-xs-column, &.layout-gt-xs-column,
-  &.layout-sm-column, &.layout-gt-sm-column,
-  &.layout-md-column, &.layout-gt-md-column,
-  &.layout-lg-column, &.layout-gt-lg-column,
-  &.layout-xl-column {
-    md-radio-button {
-      margin-bottom: $radio-margin;
-    }
-  }
-
-  &.layout-row,
-  &.layout-xs-row, &.layout-gt-xs-row,
-  &.layout-sm-row, &.layout-gt-sm-row,
-  &.layout-md-row, &.layout-gt-md-row,
-  &.layout-lg-row, &.layout-gt-lg-row,
-  &.layout-xl-row {
-    md-radio-button {
-      margin-top: 0;
-      margin-bottom: 0;
-      @include rtl(margin-left, inherit, $radio-margin);
-      @include rtl(margin-right, $radio-margin, inherit);
-
-      &:last-of-type {
-        @include rtl(margin-left, inherit, 0);
-        @include rtl(margin-right, 0, inherit);
-      }
-    }
-  }
-  &:focus {
-    outline: none;
-  }
-  &.md-focused {
-    .md-checked ._md-container:before {
-      left: -8px;
-      top: -8px;
-      right: -8px;
-      bottom: -8px;
-    }
-  }
-}
-
-.md-inline-form {
-  md-radio-group {
-    margin: 18px 0 19px;
-    md-radio-button {
-      display: inline-block;
-      height: 30px;
-      padding: 2px;
-      box-sizing: border-box;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-}
-
-@media screen and (-ms-high-contrast: active) {
-  md-radio-button.md-default-theme ._md-on {
-    background-color: #fff;
-  }
 }
 
 $progress-linear-bar-height: 5px !default;
@@ -4541,6 +4461,180 @@ md-progress-linear {
 }
 
 
+
+$radio-width: 20px !default;
+$radio-height: $radio-width !default;
+$radio-text-margin: 10px !default;
+$radio-top-left: 12px !default;
+$radio-margin: 16px;
+
+md-radio-button {
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: $radio-margin;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+
+  // disabled
+  &[disabled] {
+    cursor: default;
+
+    ._md-container {
+      cursor: default;
+    }
+  }
+
+  ._md-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    display: inline-block;
+    width: $radio-width;
+    height: $radio-width;
+    cursor: pointer;
+    @include rtl(left, 0, auto);
+    @include rtl(right, auto, 0);
+
+    .md-ripple-container {
+      position: absolute;
+      display: block;
+      width: auto;
+      height: auto;
+      left: -15px;
+      top: -15px;
+      right: -15px;
+      bottom: -15px;
+    }
+
+    &:before {
+      box-sizing: border-box;
+      background-color: transparent;
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+      display: block;
+      height: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      transition: all 0.5s;
+      width: auto;
+    }
+  }
+
+  &.md-align-top-left > div._md-container {
+     top: $radio-top-left;
+   }
+
+  ._md-off {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $radio-width;
+    height: $radio-width;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+    transition: border-color ease 0.28s;
+  }
+
+  ._md-on {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $radio-width;
+    height: $radio-width;
+    border-radius: 50%;
+    transition: transform ease 0.28s;
+    transform: scale(0);
+  }
+
+  &.md-checked ._md-on {
+    transform: scale(0.50);
+  }
+
+  ._md-label {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+
+    @include rtl(margin-left, $radio-text-margin + $radio-width, 0);
+    @include rtl(margin-right, 0, $radio-text-margin + $radio-width);
+
+    vertical-align: middle;
+    white-space: normal;
+    pointer-events: none;
+    width: auto;
+  }
+}
+
+md-radio-group {
+  &.layout-column,
+  &.layout-xs-column, &.layout-gt-xs-column,
+  &.layout-sm-column, &.layout-gt-sm-column,
+  &.layout-md-column, &.layout-gt-md-column,
+  &.layout-lg-column, &.layout-gt-lg-column,
+  &.layout-xl-column {
+    md-radio-button {
+      margin-bottom: $radio-margin;
+    }
+  }
+
+  &.layout-row,
+  &.layout-xs-row, &.layout-gt-xs-row,
+  &.layout-sm-row, &.layout-gt-sm-row,
+  &.layout-md-row, &.layout-gt-md-row,
+  &.layout-lg-row, &.layout-gt-lg-row,
+  &.layout-xl-row {
+    md-radio-button {
+      margin-top: 0;
+      margin-bottom: 0;
+      @include rtl(margin-left, inherit, $radio-margin);
+      @include rtl(margin-right, $radio-margin, inherit);
+
+      &:last-of-type {
+        @include rtl(margin-left, inherit, 0);
+        @include rtl(margin-right, 0, inherit);
+      }
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  &.md-focused {
+    .md-checked ._md-container:before {
+      left: -8px;
+      top: -8px;
+      right: -8px;
+      bottom: -8px;
+    }
+  }
+}
+
+.md-inline-form {
+  md-radio-group {
+    margin: 18px 0 19px;
+    md-radio-button {
+      display: inline-block;
+      height: 30px;
+      padding: 2px;
+      box-sizing: border-box;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-radio-button.md-default-theme ._md-on {
+    background-color: #fff;
+  }
+}
 
 $select-option-height: 48px;
 $select-option-padding: 16px;
@@ -4772,100 +4866,6 @@ md-optgroup {
   }
   md-select-menu {
     border: 1px solid #fff;
-  }
-}
-
-md-toolbar.md-menu-toolbar {
-  h2.md-toolbar-tools {
-    line-height: 1rem;
-    height: auto;
-    padding: 3.5 * $baseline-grid;
-    padding-bottom: 1.5 * $baseline-grid;
-  }
-}
-
-md-menu-bar {
-  padding: 0 2.5 * $baseline-grid;
-  display: block;
-  position: relative;
-  z-index: 2;
-  .md-menu {
-    display: inline-block;
-    padding: 0;
-    position: relative;
-  }
-  button {
-    font-size: rem(1.4);
-    padding: 0 1.25 * $baseline-grid;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-    height: 5 * $baseline-grid;
-  }
-
-  md-backdrop._md-menu-backdrop {
-    z-index: -2;
-  }
-}
-
-md-menu-content._md-menu-bar-menu.md-dense {
-  max-height: none;
-  padding: 2 * $baseline-grid 0;
-  md-menu-item.md-indent {
-    position: relative;
-    > md-icon {
-      position: absolute;
-      padding: 0;
-      width: 24px;
-      top: 0.75 * $baseline-grid;
-      @include rtl-prop(left, right, 3 * $baseline-grid);
-    }
-    > .md-button, .md-menu > .md-button {
-      @include rtl(padding, 0 4 * $baseline-grid 0 8 * $baseline-grid, 0 8 * $baseline-grid 0 4 * $baseline-grid);
-    }
-  }
-  .md-button {
-    min-height: 0;
-    height: 4 * $baseline-grid;
-    display: flex;
-    span {
-      flex-grow: 1;
-    }
-    span.md-alt-text {
-      flex-grow: 0;
-      align-self: flex-end;
-      margin: 0 $baseline-grid;
-    }
-  }
-  md-menu-divider {
-    margin: $baseline-grid 0;
-  }
-
-  md-menu-item > .md-button, .md-menu > .md-button {
-    @include rtl(text-align, left, right);
-    text-align: start;
-  }
-
-  .md-menu {
-    padding: 0;
-    > .md-button {
-      position: relative;
-      margin: 0;
-      width: 100%;
-      text-transform: none;
-      font-weight: normal;
-      border-radius: 0px;
-      @include rtl-prop(padding-left, padding-right, 2 * $baseline-grid);
-      &:after {
-        display: block;
-        content: '\25BC';
-        position: absolute;
-        top: 0px;
-        speak: none;
-        @include rtl(transform, rotate(270deg) scaleY(0.45) scaleX(0.9), rotate(90deg) scaleY(0.45) scaleX(0.9));
-        @include rtl-prop(right, left, 3.5 * $baseline-grid);
-      }
-    }
   }
 }
 
@@ -6011,381 +6011,6 @@ md-toolbar + md-tabs {
   border-top-right-radius: 0;
 }
 
-// Standard/Desktop Heights
-$toolbar-tools-height: 64px !default;
-$toolbar-height: 64px !default;
-$toolbar-medium-tall-height: 88px !default;
-$toolbar-tall-height: 128px !default;
-
-// Mobile portrait heights
-$toolbar-tools-height-mobile-portrait: 56px !default;
-$toolbar-height-mobile-portrait: 56px !default;
-
-// Mobile landscape heights
-$toolbar-tools-height-mobile-landscape: 48px !default;
-$toolbar-height-mobile-landscape: 48px !default;
-
-
-$toolbar-indent-margin: 64px !default;
-$toolbar-padding: 16px !default;
-
-$icon-button-margin-offset: rem(-0.800) !default;
-
-md-toolbar {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-
-  position: relative;
-  z-index: 2;
-
-  font-size: rem(2.0);
-  min-height: $baseline-grid * 8;
-  width: 100%;
-
-  transition: $swift-ease-in-out;
-  transition-property: background-color, fill, color;
-
-  &.md-whiteframe-z1-add, &.md-whiteframe-z1-remove {
-    transition: box-shadow $swift-ease-in-out-duration linear;
-  }
-
-  md-toolbar-filler {
-    width: 9 * $baseline-grid;
-  }
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
-
-  &.md-tall {
-    height: $toolbar-tall-height;
-    min-height: $toolbar-tall-height;
-    max-height: $toolbar-tall-height;
-  }
-
-  &.md-medium-tall {
-    height: $toolbar-medium-tall-height;
-    min-height: $toolbar-medium-tall-height;
-    max-height: $toolbar-medium-tall-height;
-
-    .md-toolbar-tools {
-      height: 48px;
-      min-height: 48px;
-      max-height: 48px;
-    }
-  }
-
-  > .md-indent {
-    @include rtl-prop(margin-left, margin-right, $toolbar-indent-margin);
-  }
-
-  ~ md-content {
-    > md-list {
-      padding: 0;
-
-      md-list-item:last-child {
-        md-divider {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-.md-toolbar-tools {
-  font-size: $title-font-size-base;
-  letter-spacing: 0.005em;
-  box-sizing: border-box;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-
-  width: 100%;
-  height: $toolbar-tools-height;
-  max-height: $toolbar-tools-height;
-  padding: 0 $toolbar-padding;
-  margin: 0;
-
-  h1, h2, h3 {
-    font-size: inherit;
-    font-weight: inherit;
-    margin: inherit;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .fill-height {
-    display: flex;
-    align-items: center;
-  }
-  .md-button {
-    margin-top: 0;
-    margin-bottom: 0;
-
-    &, &.md-icon-button md-icon {
-      transition: $swift-ease-in-out;
-      transition-property: background-color, fill, color;
-    }
-  }
-  &> .md-button:first-child {
-    @include rtl-prop(margin-left, margin-right, $icon-button-margin-offset);
-  }
-  &> .md-button:last-child {
-    @include rtl-prop(margin-right, margin-left, $icon-button-margin-offset);
-  }
-
-  &> md-menu:last-child {
-    @include rtl-prop(margin-right, margin-left, $icon-button-margin-offset);
-    & > .md-button {
-      @include rtl-prop(margin-right, margin-left, 0);
-    }
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    border-bottom: 1px solid #fff;
-  }
-}
-
-// Handle mobile portrait
-@media (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: portrait) {
-  md-toolbar {
-    min-height: $toolbar-height-mobile-portrait;
-  }
-
-  .md-toolbar-tools {
-    height: $toolbar-height-mobile-portrait;
-    max-height: $toolbar-height-mobile-portrait;
-  }
-}
-
-// Handle mobile landscape
-@media (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: landscape) {
-  md-toolbar {
-    min-height: $toolbar-height-mobile-landscape;
-  }
-
-  .md-toolbar-tools {
-    height: $toolbar-height-mobile-landscape;
-    max-height: $toolbar-height-mobile-landscape;
-  }
-}
-
-
-.md-whiteframe-1dp, .md-whiteframe-z1 {
-  box-shadow: $whiteframe-shadow-1dp;
-}
-.md-whiteframe-2dp {
-  box-shadow: $whiteframe-shadow-2dp;
-}
-.md-whiteframe-3dp {
-  box-shadow: $whiteframe-shadow-3dp;
-}
-.md-whiteframe-4dp, .md-whiteframe-z2{
-  box-shadow: $whiteframe-shadow-4dp;
-}
-.md-whiteframe-5dp {
-  box-shadow: $whiteframe-shadow-5dp;
-}
-.md-whiteframe-6dp {
-  box-shadow: $whiteframe-shadow-6dp;
-}
-.md-whiteframe-7dp, .md-whiteframe-z3 {
-  box-shadow: $whiteframe-shadow-7dp;
-}
-.md-whiteframe-8dp {
-  box-shadow: $whiteframe-shadow-8dp;
-}
-.md-whiteframe-9dp {
-  box-shadow: $whiteframe-shadow-9dp;
-}
-.md-whiteframe-10dp, .md-whiteframe-z4 {
-  box-shadow: $whiteframe-shadow-10dp;
-}
-.md-whiteframe-11dp {
-  box-shadow: $whiteframe-shadow-11dp;
-}
-.md-whiteframe-12dp {
-  box-shadow: $whiteframe-shadow-12dp;
-}
-.md-whiteframe-13dp, .md-whiteframe-z5{
-  box-shadow: $whiteframe-shadow-13dp;
-}
-.md-whiteframe-14dp {
-  box-shadow: $whiteframe-shadow-14dp;
-}
-.md-whiteframe-15dp {
-  box-shadow: $whiteframe-shadow-15dp;
-}
-.md-whiteframe-16dp {
-  box-shadow: $whiteframe-shadow-16dp;
-}
-.md-whiteframe-17dp {
-  box-shadow: $whiteframe-shadow-17dp;
-}
-.md-whiteframe-18dp {
-  box-shadow: $whiteframe-shadow-18dp;
-}
-.md-whiteframe-19dp {
-  box-shadow: $whiteframe-shadow-19dp;
-}
-.md-whiteframe-20dp {
-  box-shadow: $whiteframe-shadow-20dp;
-}
-.md-whiteframe-21dp {
-  box-shadow: $whiteframe-shadow-21dp;
-}
-.md-whiteframe-22dp {
-  box-shadow: $whiteframe-shadow-22dp;
-}
-.md-whiteframe-23dp {
-  box-shadow: $whiteframe-shadow-23dp;
-}
-.md-whiteframe-24dp {
-  box-shadow: $whiteframe-shadow-24dp;
-}
-
-@media screen and (-ms-high-contrast: active) {
-  md-whiteframe {
-    border: 1px solid #fff;
-  }
-}
-
-$tooltip-fontsize-lg: rem(1);
-$tooltip-fontsize-sm: rem(1.4);
-$tooltip-height-lg: rem(2.2);
-$tooltip-height-sm: rem(3.2);
-$tooltip-top-margin-lg: rem(1.4);
-$tooltip-top-margin-sm: rem(2.4);
-$tooltip-lr-padding-lg: rem(0.8);
-$tooltip-lr-padding-sm: rem(1.6);
-$tooltip-max-width: rem(3.20);
-
-md-tooltip {
-  position: absolute;
-  z-index: $z-index-tooltip;
-  overflow: hidden;
-  pointer-events: none;
-  border-radius: 4px;
-
-  font-weight: 500;
-  font-size: $tooltip-fontsize-sm;
-  @media (min-width: $layout-breakpoint-sm) {
-    font-size: $tooltip-fontsize-lg;
-  }
-
-  ._md-content {
-    position: relative;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transform-origin: center top;
-    transform: scale(0);
-    opacity: 0;
-    height: $tooltip-height-sm;
-    line-height: $tooltip-height-sm;
-    padding-left: $tooltip-lr-padding-sm;
-    padding-right: $tooltip-lr-padding-sm;
-    @media (min-width: $layout-breakpoint-sm) {
-      height: $tooltip-height-lg;
-      line-height: $tooltip-height-lg;
-      padding-left: $tooltip-lr-padding-lg;
-      padding-right: $tooltip-lr-padding-lg;
-    }
-    &._md-show-add {
-      transition: $swift-ease-out;
-      transition-duration: .2s;
-      transform: scale(0);
-      opacity: 0;
-    }
-    &._md-show, &._md-show-add-active {
-      transform: scale(1);
-      opacity: 1;
-      transform-origin: center top;
-    }
-    &._md-show-remove {
-      transition: $swift-ease-out;
-      transition-duration: .2s;
-      &._md-show-remove-active {
-        transform: scale(0);
-        opacity: 0;
-      }
-    }
-  }
-
-  &._md-hide {
-    transition: $swift-ease-in;
-  }
-
-  &._md-show {
-    transition: $swift-ease-out;
-    pointer-events: auto;
-    will-change: opacity, height, width;
-  }
-}
-
-$virtual-repeat-scrollbar-width: 16px;
-
-.md-virtual-repeat-container {
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: relative;
-
-  .md-virtual-repeat-scroller {
-    bottom: 0;
-    box-sizing: border-box;
-    left: 0;
-    margin: 0;
-    overflow-x: hidden;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .md-virtual-repeat-sizer {
-    box-sizing: border-box;
-    height: 1px;
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 1px;
-  }
-
-  .md-virtual-repeat-offsetter {
-    box-sizing: border-box;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-}
-
-.md-virtual-repeat-container.md-orient-horizontal {
-  .md-virtual-repeat-scroller {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
-  .md-virtual-repeat-offsetter {
-    // Leave room for the scroll bar.
-    // TODO: Will probably need to perform measurements at runtime.
-    bottom: $virtual-repeat-scrollbar-width;
-    @include rtl-prop(right, left, auto);
-    white-space: nowrap;
-  }
-}
-
 // See height set globally, depended on by buttons
 
 $md-toast-content-padding: 3 * $baseline-grid - $button-left-right-padding;
@@ -6598,6 +6223,381 @@ md-toast {
 // While animating, set the toast parent's overflow to hidden so scrollbars do not appear
 ._md-toast-animating {
   overflow: hidden !important;
+}
+
+// Standard/Desktop Heights
+$toolbar-tools-height: 64px !default;
+$toolbar-height: 64px !default;
+$toolbar-medium-tall-height: 88px !default;
+$toolbar-tall-height: 128px !default;
+
+// Mobile portrait heights
+$toolbar-tools-height-mobile-portrait: 56px !default;
+$toolbar-height-mobile-portrait: 56px !default;
+
+// Mobile landscape heights
+$toolbar-tools-height-mobile-landscape: 48px !default;
+$toolbar-height-mobile-landscape: 48px !default;
+
+
+$toolbar-indent-margin: 64px !default;
+$toolbar-padding: 16px !default;
+
+$icon-button-margin-offset: rem(-0.800) !default;
+
+md-toolbar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  z-index: 2;
+
+  font-size: rem(2.0);
+  min-height: $baseline-grid * 8;
+  width: 100%;
+
+  transition: $swift-ease-in-out;
+  transition-property: background-color, fill, color;
+
+  &.md-whiteframe-z1-add, &.md-whiteframe-z1-remove {
+    transition: box-shadow $swift-ease-in-out-duration linear;
+  }
+
+  md-toolbar-filler {
+    width: 9 * $baseline-grid;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  &.md-tall {
+    height: $toolbar-tall-height;
+    min-height: $toolbar-tall-height;
+    max-height: $toolbar-tall-height;
+  }
+
+  &.md-medium-tall {
+    height: $toolbar-medium-tall-height;
+    min-height: $toolbar-medium-tall-height;
+    max-height: $toolbar-medium-tall-height;
+
+    .md-toolbar-tools {
+      height: 48px;
+      min-height: 48px;
+      max-height: 48px;
+    }
+  }
+
+  > .md-indent {
+    @include rtl-prop(margin-left, margin-right, $toolbar-indent-margin);
+  }
+
+  ~ md-content {
+    > md-list {
+      padding: 0;
+
+      md-list-item:last-child {
+        md-divider {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.md-toolbar-tools {
+  font-size: $title-font-size-base;
+  letter-spacing: 0.005em;
+  box-sizing: border-box;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  width: 100%;
+  height: $toolbar-tools-height;
+  max-height: $toolbar-tools-height;
+  padding: 0 $toolbar-padding;
+  margin: 0;
+
+  h1, h2, h3 {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .fill-height {
+    display: flex;
+    align-items: center;
+  }
+  .md-button {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &, &.md-icon-button md-icon {
+      transition: $swift-ease-in-out;
+      transition-property: background-color, fill, color;
+    }
+  }
+  &> .md-button:first-child {
+    @include rtl-prop(margin-left, margin-right, $icon-button-margin-offset);
+  }
+  &> .md-button:last-child {
+    @include rtl-prop(margin-right, margin-left, $icon-button-margin-offset);
+  }
+
+  &> md-menu:last-child {
+    @include rtl-prop(margin-right, margin-left, $icon-button-margin-offset);
+    & > .md-button {
+      @include rtl-prop(margin-right, margin-left, 0);
+    }
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border-bottom: 1px solid #fff;
+  }
+}
+
+// Handle mobile portrait
+@media (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: portrait) {
+  md-toolbar {
+    min-height: $toolbar-height-mobile-portrait;
+  }
+
+  .md-toolbar-tools {
+    height: $toolbar-height-mobile-portrait;
+    max-height: $toolbar-height-mobile-portrait;
+  }
+}
+
+// Handle mobile landscape
+@media (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: landscape) {
+  md-toolbar {
+    min-height: $toolbar-height-mobile-landscape;
+  }
+
+  .md-toolbar-tools {
+    height: $toolbar-height-mobile-landscape;
+    max-height: $toolbar-height-mobile-landscape;
+  }
+}
+
+
+$tooltip-fontsize-lg: rem(1);
+$tooltip-fontsize-sm: rem(1.4);
+$tooltip-height-lg: rem(2.2);
+$tooltip-height-sm: rem(3.2);
+$tooltip-top-margin-lg: rem(1.4);
+$tooltip-top-margin-sm: rem(2.4);
+$tooltip-lr-padding-lg: rem(0.8);
+$tooltip-lr-padding-sm: rem(1.6);
+$tooltip-max-width: rem(3.20);
+
+md-tooltip {
+  position: absolute;
+  z-index: $z-index-tooltip;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 4px;
+
+  font-weight: 500;
+  font-size: $tooltip-fontsize-sm;
+  @media (min-width: $layout-breakpoint-sm) {
+    font-size: $tooltip-fontsize-lg;
+  }
+
+  ._md-content {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: center top;
+    transform: scale(0);
+    opacity: 0;
+    height: $tooltip-height-sm;
+    line-height: $tooltip-height-sm;
+    padding-left: $tooltip-lr-padding-sm;
+    padding-right: $tooltip-lr-padding-sm;
+    @media (min-width: $layout-breakpoint-sm) {
+      height: $tooltip-height-lg;
+      line-height: $tooltip-height-lg;
+      padding-left: $tooltip-lr-padding-lg;
+      padding-right: $tooltip-lr-padding-lg;
+    }
+    &._md-show-add {
+      transition: $swift-ease-out;
+      transition-duration: .2s;
+      transform: scale(0);
+      opacity: 0;
+    }
+    &._md-show, &._md-show-add-active {
+      transform: scale(1);
+      opacity: 1;
+      transform-origin: center top;
+    }
+    &._md-show-remove {
+      transition: $swift-ease-out;
+      transition-duration: .2s;
+      &._md-show-remove-active {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  }
+
+  &._md-hide {
+    transition: $swift-ease-in;
+  }
+
+  &._md-show {
+    transition: $swift-ease-out;
+    pointer-events: auto;
+    will-change: opacity, height, width;
+  }
+}
+
+$virtual-repeat-scrollbar-width: 16px;
+
+.md-virtual-repeat-container {
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+  .md-virtual-repeat-scroller {
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .md-virtual-repeat-sizer {
+    box-sizing: border-box;
+    height: 1px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 1px;
+  }
+
+  .md-virtual-repeat-offsetter {
+    box-sizing: border-box;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.md-virtual-repeat-container.md-orient-horizontal {
+  .md-virtual-repeat-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .md-virtual-repeat-offsetter {
+    // Leave room for the scroll bar.
+    // TODO: Will probably need to perform measurements at runtime.
+    bottom: $virtual-repeat-scrollbar-width;
+    @include rtl-prop(right, left, auto);
+    white-space: nowrap;
+  }
+}
+
+.md-whiteframe-1dp, .md-whiteframe-z1 {
+  box-shadow: $whiteframe-shadow-1dp;
+}
+.md-whiteframe-2dp {
+  box-shadow: $whiteframe-shadow-2dp;
+}
+.md-whiteframe-3dp {
+  box-shadow: $whiteframe-shadow-3dp;
+}
+.md-whiteframe-4dp, .md-whiteframe-z2{
+  box-shadow: $whiteframe-shadow-4dp;
+}
+.md-whiteframe-5dp {
+  box-shadow: $whiteframe-shadow-5dp;
+}
+.md-whiteframe-6dp {
+  box-shadow: $whiteframe-shadow-6dp;
+}
+.md-whiteframe-7dp, .md-whiteframe-z3 {
+  box-shadow: $whiteframe-shadow-7dp;
+}
+.md-whiteframe-8dp {
+  box-shadow: $whiteframe-shadow-8dp;
+}
+.md-whiteframe-9dp {
+  box-shadow: $whiteframe-shadow-9dp;
+}
+.md-whiteframe-10dp, .md-whiteframe-z4 {
+  box-shadow: $whiteframe-shadow-10dp;
+}
+.md-whiteframe-11dp {
+  box-shadow: $whiteframe-shadow-11dp;
+}
+.md-whiteframe-12dp {
+  box-shadow: $whiteframe-shadow-12dp;
+}
+.md-whiteframe-13dp, .md-whiteframe-z5{
+  box-shadow: $whiteframe-shadow-13dp;
+}
+.md-whiteframe-14dp {
+  box-shadow: $whiteframe-shadow-14dp;
+}
+.md-whiteframe-15dp {
+  box-shadow: $whiteframe-shadow-15dp;
+}
+.md-whiteframe-16dp {
+  box-shadow: $whiteframe-shadow-16dp;
+}
+.md-whiteframe-17dp {
+  box-shadow: $whiteframe-shadow-17dp;
+}
+.md-whiteframe-18dp {
+  box-shadow: $whiteframe-shadow-18dp;
+}
+.md-whiteframe-19dp {
+  box-shadow: $whiteframe-shadow-19dp;
+}
+.md-whiteframe-20dp {
+  box-shadow: $whiteframe-shadow-20dp;
+}
+.md-whiteframe-21dp {
+  box-shadow: $whiteframe-shadow-21dp;
+}
+.md-whiteframe-22dp {
+  box-shadow: $whiteframe-shadow-22dp;
+}
+.md-whiteframe-23dp {
+  box-shadow: $whiteframe-shadow-23dp;
+}
+.md-whiteframe-24dp {
+  box-shadow: $whiteframe-shadow-24dp;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-whiteframe {
+    border: 1px solid #fff;
+  }
 }
 
 /*
